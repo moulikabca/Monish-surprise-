@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Surprise For Monish ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:Georgia,serif;
+background:linear-gradient(135deg,#ffe0eb,#fff0f5,#ffd6e5);
+color:#a83260;
+text-align:center;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+button{cursor:pointer}
+
+.screen{
+display:none;
+min-height:100vh;
+padding:30px 15px;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+}
+
+.screen.active{display:flex}
+
+.box{
+width:95%;
+max-width:650px;
+padding:35px 22px;
+border-radius:28px;
+background:#ffffffdd;
+box-shadow:0 10px 40px #d45b8740;
+}
+
+h1{font-size:clamp(32px,7vw,48px);margin:20px 0}
+h2{font-size:30px;margin:20px 0}
+p{line-height:1.8;margin:15px 0}
+
+.heart{
+font-size:75px;
+animation:beat 1.5s infinite;
+}
+
+@keyframes beat{
+50%{transform:scale(1.2)}
+}
+
+.btn{
+border:none;
+border-radius:30px;
+padding:14px 25px;
+background:linear-gradient(90deg,#ed6b98,#c83f73);
+color:white;
+font-size:16px;
+margin:12px 5px;
+box-shadow:0 5px 15px #e879a066;
+}
+
+.finger{
+font-size:85px;
+background:none;
+border:none;
+animation:glow 1.5s infinite;
+}
+
+@keyframes glow{
+50%{transform:scale(1.15);filter:drop-shadow(0 0 15px pink)}
+}
+
+.page{
+display:none;
+animation:fade .6s;
+}
+
+.page.active{display:block}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+/* CARTOON COUPLE CARDS */
+
+.cartoon-card{
+width:100%;
+max-width:430px;
+margin:25px auto;
+padding:30px 12px;
+border-radius:25px;
+background:linear-gradient(135deg,#ffe1ed,#fff0f5,#ffd6e5);
+box-shadow:0 5px 20px #e879a044;
+position:relative;
+overflow:hidden;
+}
+
+.cartoon-couple{
+font-size:90px;
+margin:20px 0;
+animation:coupleFloat 2s infinite ease-in-out;
+}
+
+@keyframes coupleFloat{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-12px)}
+}
+
+.gift-row{
+display:flex;
+justify-content:center;
+gap:25px;
+font-size:45px;
+margin:15px 0;
+}
+
+.gift-row span{
+animation:giftBounce 1.5s infinite;
+}
+
+.gift-row span:nth-child(2){animation-delay:.3s}
+.gift-row span:nth-child(3){animation-delay:.6s}
+
+@keyframes giftBounce{
+50%{transform:translateY(-10px) rotate(8deg)}
+}
+
+.cartoon-caption{
+font-size:17px;
+color:#c83f73;
+font-weight:bold;
+}
+
+.sparkle{
+position:absolute;
+font-size:22px;
+animation:sparkle 2s infinite;
+}
+
+.sparkle.one{top:15px;left:20px}
+.sparkle.two{top:35px;right:20px}
+.sparkle.three{bottom:25px;left:25px}
+.sparkle.four{bottom:25px;right:25px}
+
+@keyframes sparkle{
+50%{transform:scale(1.5) rotate(30deg);opacity:.5}
+}
+
+/* MUSIC */
+
+.music{
+position:fixed;
+top:12px;
+right:12px;
+z-index:5;
+}
+
+/* NAVIGATION */
+
+.navbuttons{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:7px;
+margin:20px 0;
+}
+
+.navbuttons button{
+width:38px;
+height:38px;
+border-radius:50%;
+border:1px solid #e75480;
+background:white;
+color:#e75480;
+}
+
+.navbuttons button.selected{
+background:#e75480;
+color:white;
+}
+
+/* LOVE METER */
+
+.progress{
+height:14px;
+background:#ffd2e1;
+border-radius:20px;
+overflow:hidden;
+margin:20px 0;
+}
+
+.bar{
+height:100%;
+width:0;
+background:#e75480;
+transition:width .1s;
+}
+
+.percent{font-size:35px}
+.cake{font-size:100px}
+
+/* FLOATING HEARTS */
+
+.float{
+position:fixed;
+bottom:-30px;
+animation:up 7s linear forwards;
+pointer-events:none;
+z-index:0;
+}
+
+@keyframes up{
+to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+
+footer{padding:20px}
+
+</style>
+</head>
+
+<body>
+
+<button class="btn music" onclick="toggleMusic()" id="musicBtn">
+♫ Music
+</button>
+
+<!-- INTRO -->
+
+<section class="screen active" id="intro">
+<div class="box">
+
+<div class="heart">💌</div>
+
+<h1>Hey Monish! ❤️</h1>
+
+<p>
+Someone has created a little surprise
+just for you...
+<br><br>
+A small world filled with love,
+memories and beautiful feelings.
+</p>
+
+<p>Are you ready to see it? 🥹</p>
+
+<button class="btn" onclick="goFingerprint()">
+Open Your Surprise 💗
+</button>
+
+</div>
+</section>
+
+
+<!-- FINGERPRINT -->
+
+<section class="screen" id="fingerprint">
+<div class="box">
+
+<div class="heart">🔐</div>
+
+<h1>One Little Secret!</h1>
+
+<p>Only a special person can unlock this little world.</p>
+
+<button class="finger" onclick="unlock()">☝️</button>
+
+<p id="fingerText">Touch here to unlock ❤️</p>
+
+</div>
+</section>
+
+
+<!-- MAIN WEBSITE -->
+
+<section class="screen" id="main">
+<div class="box">
+
+<h1>Our Little Forever ♾️</h1>
+<p>Every page holds a little piece of us. ❤️</p>
+
+
+<!-- PAGE 1 -->
+
+<div class="page active" id="p1">
+
+<div class="heart">💗</div>
+<h2>Welcome My Love!</h2>
+
+<p>
+You are one of the most beautiful parts of my life.
+<br><br>
+I made this little website especially for you.
+</p>
+
+<div class="cartoon-card">
+
+<span class="sparkle one">✨</span>
+<span class="sparkle two">💕</span>
+<span class="sparkle three">🌸</span>
+<span class="sparkle four">⭐</span>
+
+<div class="cartoon-couple">👩🏻‍❤️‍👨🏻</div>
+
+<div class="gift-row">
+<span>🎁</span>
+<span>💝</span>
+<span>🎀</span>
+</div>
+
+<p class="cartoon-caption">
+A Little Gift Made With Love ❤️
+</p>
+
+</div>
+</div>
+
+
+<!-- PAGE 2 -->
+
+<div class="page" id="p2">
+
+<div class="heart">✨</div>
+<h2>Our Beginning</h2>
+
+<p>
+Some unexpected moments become the most beautiful memories.
+<br><br>
+I am happy our story began.
+</p>
+
+<div class="cartoon-card">
+
+<span class="sparkle one">🌷</span>
+<span class="sparkle two">✨</span>
+<span class="sparkle three">💗</span>
+<span class="sparkle four">🌸</span>
+
+<div class="cartoon-couple">👩🏻‍❤️‍👨🏻</div>
+
+<div class="gift-row">
+<span>🌹</span>
+<span>🎁</span>
+<span>💌</span>
+</div>
+
+<p class="cartoon-caption">
+Our Story Is My Favourite Fairytale! 💕
+</p>
+
+</div>
+</div>
+
+
+<!-- PAGE 3 -->
+
+<div class="page" id="p3">
+
+<div class="heart">🌷</div>
+<h2>My Favourite Person</h2>
+
+<p>
+Your smile, your voice,
+your silly talks...
+<br><br>
+Everything about you makes my day special.
+</p>
+
+<!-- NEW CARTOON COUPLE -->
+
+<div class="cartoon-card">
+
+<span class="sparkle one">💖</span>
+<span class="sparkle two">✨</span>
+<span class="sparkle three">🌸</span>
+<span class="sparkle four">🦋</span>
+
+<div class="cartoon-couple">👩🏻‍❤️‍💋‍👨🏻</div>
+
+<div class="gift-row">
+<span>🌹</span>
+<span>💞</span>
+<span>🎀</span>
+</div>
+
+<p class="cartoon-caption">
+You Are My Favourite Person! 🥹❤️
+</p>
+
+</div>
+
+</div>
+
+
+<!-- PAGE 4 -->
+
+<div class="page" id="p4">
+
+<div class="heart">♾️</div>
+<h2>My Forever Promise</h2>
+
+<p>
+Whatever happens,
+I want us to keep choosing each other.
+<br><br>
+More love, more memories,
+more beautiful tomorrows.
+</p>
+
+</div>
+
+
+<!-- PAGE 5 -->
+
+<div class="page" id="p5">
+
+<div class="heart">🔐</div>
+<h2>My Secret Message</h2>
+
+<button class="finger" onclick="secret()">💝</button>
+
+<p id="secretText">
+Tap the heart to reveal a secret.
+</p>
+
+</div>
+
+
+<!-- PAGE 6 -->
+
+<div class="page" id="p6">
+
+<div class="heart">💞</div>
+<h2>Loading My Love...</h2>
+
+<div class="percent" id="percent">0%</div>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<p id="loadingText">Counting endless love...</p>
+
+<button class="btn" onclick="loadLove()">
+Start Love Meter
+</button>
+
+</div>
+
+
+<!-- PAGE 7 -->
+
+<div class="page" id="p7">
+
+<div class="heart">🎂</div>
+<h2>Make A Wish!</h2>
+
+<div class="cake">🎂</div>
+
+<p id="candles">🕯️ 🕯️ 🕯️</p>
+
+<button class="btn" onclick="blow()">
+Blow The Candles 💨
+</button>
+
+<p id="wish"></p>
+
+</div>
+
+
+<!-- PAGE 8 -->
+
+<div class="page" id="p8">
+
+<div class="heart">❤️</div>
+<h2>My Today & Forever</h2>
+
+<p>
+Thank you for being part of my life.
+<br><br>
+I want to celebrate every birthday,
+every anniversary and every little moment with you.
+<br><br>
+No matter how many pages I create,
+there will always be more love to write.
+</p>
+
+<h2>I LOVE YOU SO MUCH! 💗</h2>
+
+<div class="cartoon-card">
+
+<div class="cartoon-couple">👩🏻‍❤️‍👨🏻</div>
+
+<div class="gift-row">
+<span>💍</span>
+<span>❤️</span>
+<span>♾️</span>
+</div>
+
+<p class="cartoon-caption">
+Together Forever! 💕
+</p>
+
+</div>
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="navbuttons" id="dots"></div>
+
+<button class="btn" onclick="back()">← Back</button>
+
+<button class="btn" onclick="next()" id="nextBtn">Next →</button>
+
+</div>
+</section>
+
+<footer>Made with endless love ❤️</footer>
+
+
+<script>
+
+/* SCREEN CONTROL */
+
+function changeScreen(id){
+
+document.querySelectorAll(".screen").forEach(function(s){
+s.classList.remove("active");
+});
+
+document.getElementById(id).classList.add("active");
+
+window.scrollTo(0,0);
+
+}
+
+
+/* INTRO */
+
+function goFingerprint(){
+changeScreen("fingerprint");
+}
+
+
+/* UNLOCK */
+
+function unlock(){
+
+document.getElementById("fingerText").innerText=
+"Unlocked! Welcome to our little world ❤️";
+
+setTimeout(function(){
+changeScreen("main");
+},1000);
+
+}
+
+
+/* PAGE NAVIGATION */
+
+var current=1;
+var total=8;
+
+var dots=document.getElementById("dots");
+
+for(let i=1;i<=total;i++){
+
+let b=document.createElement("button");
+
+b.innerText=i;
+
+b.type="button";
+
+b.onclick=function(){
+showPage(i);
+};
+
+dots.appendChild(b);
+
+}
+
+
+function showPage(n){
+
+if(n<1 || n>total)return;
+
+current=n;
+
+for(let i=1;i<=total;i++){
+
+document.getElementById("p"+i).classList.remove("active");
+
+}
+
+document.getElementById("p"+n).classList.add("active");
+
+document.querySelectorAll("#dots button").forEach(function(b,i){
+
+b.classList.toggle("selected",i+1===n);
+
+});
+
+document.getElementById("nextBtn").innerText=
+n===8?"Start Again ↻":"Next →";
+
+window.scrollTo(0,0);
+
+}
+
+
+function next(){
+
+if(current===8){
+showPage(1);
+}else{
+showPage(current+1);
+}
+
+}
+
+
+function back(){
+
+if(current>1){
+showPage(current-1);
+}else{
+changeScreen("fingerprint");
+}
+
+}
+
+
+/* SECRET */
+
+function secret(){
+
+document.getElementById("secretText").innerText=
+"You are my favourite person, my happiness and my forever love! ❤️";
+
+}
+
+
+/* LOVE METER */
+
+var loading=false;
+
+function loadLove(){
+
+if(loading)return;
+
+loading=true;
+
+var n=0;
+
+document.getElementById("percent").innerText="0%";
+document.getElementById("bar").style.width="0%";
+
+document.getElementById("loadingText").innerText=
+"Counting endless love...";
+
+var timer=setInterval(function(){
+
+n++;
+
+document.getElementById("percent").innerText=n+"%";
+document.getElementById("bar").style.width=n+"%";
+
+if(n>=100){
+
+clearInterval(timer);
+
+loading=false;
+
+document.getElementById("loadingText").innerText=
+"Our love is beyond 100%! ♾️";
+
+}
+
+},40);
+
+}
+
+
+/* CANDLES */
+
+function blow(){
+
+document.getElementById("candles").innerText="♡ ♡ ♡";
+
+document.getElementById("wish").innerText=
+"Your wish will come true! ✨❤️";
+
+}
+
+
+/* FLOATING HEARTS */
+
+function createHeart(){
+
+var h=document.createElement("div");
+
+h.className="float";
+h.innerText="💕";
+
+h.style.left=Math.random()*100+"%";
+
+h.style.fontSize=(15+Math.random()*25)+"px";
+
+document.body.appendChild(h);
+
+setTimeout(function(){
+h.remove();
+},8000);
+
+}
+
+setInterval(createHeart,700);
+
+
+/* BACKGROUND MUSIC */
+
+var audio=null;
+var playing=false;
+var musicTimer=null;
+
+var notes=[261.63,329.63,392,329.63,293.66,349.23];
+
+var index=0;
+
+
+function toggleMusic(){
+
+try{
+
+if(!audio){
+
+var AudioContextClass=window.AudioContext||window.webkitAudioContext;
+
+if(!AudioContextClass){
+alert("Music is not supported in this browser.");
+return;
+}
+
+audio=new AudioContextClass();
+
+}
+
+if(audio.state==="suspended"){
+audio.resume();
+}
+
+playing=!playing;
+
+document.getElementById("musicBtn").innerText=
+playing?"Ⅱ Pause":"♫ Music";
+
+if(playing){
+playNote();
+}else{
+clearTimeout(musicTimer);
+}
+
+}catch(error){
+console.log(error);
+}
+
+}
+
+
+function playNote(){
+
+if(!playing || !audio)return;
+
+var osc=audio.createOscillator();
+
+var gain=audio.createGain();
+
+osc.type="sine";
+
+osc.frequency.value=notes[index++%notes.length];
+
+gain.gain.setValueAtTime(.001,audio.currentTime);
+
+gain.gain.linearRampToValueAtTime(.04,audio.currentTime+.1);
+
+gain.gain.linearRampToValueAtTime(.001,audio.currentTime+.7);
+
+osc.connect(gain);
+
+gain.connect(audio.destination);
+
+osc.start();
+
+osc.stop(audio.currentTime+.7);
+
+musicTimer=setTimeout(playNote,750);
+
+}
+
+
+/* INITIAL PAGE */
+
+showPage(1);
+
+</script>
+
+</body>
+</html>
